@@ -26,8 +26,10 @@ pip install -r requirements.txt
 python app.py
 ```
 
+Сервер запустится на:
+
 ```
-Сервер запустится на `http://127.0.0.1:5000/`
+http://127.0.0.1:5000/
 ```
 
 ### Frontend

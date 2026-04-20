@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - ОАЗ</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- НАВИГАЦИЯ -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-water" style="color: #A0CDFF;"></i> ОА<span>З</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Проекты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="donate.html">Благотворительность</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalog.html">Новости</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav" id="authNav">
+                    <!-- Заполняется через JavaScript -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ЛИЧНЫЙ КАБИНЕТ -->
+    <section class="profile-section">
+        <div class="container">
+            <!-- Заголовок профиля -->
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-name" id="profileName">Пользователь</div>
+                <div class="profile-role" id="profileRole">Участник</div>
+            </div>
+            
+            <!-- Вкладки книжек -->
+            <div class="book-tabs">
+                <button class="book-tab active" id="volunteerTab" onclick="switchBook('volunteer')">
+                    <i class="fas fa-hands-helping"></i> Книжка волонтера
+                </button>
+                <button class="book-tab" id="donorTab" onclick="switchBook('donor')">
+                    <i class="fas fa-heart"></i> Книжка благотворителя
+                </button>
+            </div>
+            
+            <!-- Книжка волонтера -->
+            <div class="book-content" id="volunteerBook">
+                <!-- Текущие проекты -->
+                <div id="volunteerCurrentSection">
+                    <h4 class="projects-section-title"><i class="fas fa-play-circle"></i> Текущие проекты</h4>
+                    <div class="projects-list" id="volunteerCurrentProjects">
+                        <!-- Загружается через JS -->
+                    </div>
+                </div>
+                
+                <!-- Запланированные проекты -->
+                <div id="volunteerPlannedSection">
+                    <h4 class="projects-section-title"><i class="fas fa-calendar-alt"></i> Запланированные проекты</h4>
+                    <div class="projects-list" id="volunteerPlannedProjects">
+                        <!-- Загружается через JS -->
+                    </div>
+                </div>
+                
+                <!-- Архивные проекты -->
+                <div id="volunteerArchiveSection">
+                    <h4 class="projects-section-title"><i class="fas fa-archive"></i> Архивные проекты</h4>
+                    <div class="projects-list" id="volunteerArchiveProjects">
+                        <!-- Загружается через JS -->
+                    </div>
+                </div>
+                
+                <!-- Статистика -->
+                <div class="book-stats">
+                    <div class="stat">
+                        <div class="stat-number" id="volunteerTotalProjects">0</div>
+                        <div class="stat-label">Всего проектов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="volunteerTotalHours">0</div>
+                        <div class="stat-label">Всего часов</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Книжка благотворителя -->
+            <div class="book-content hidden" id="donorBook">
+                <!-- Текущие проекты -->
+                <div id="donorCurrentSection">
+                    <h4 class="projects-section-title"><i class="fas fa-play-circle"></i> Текущие проекты</h4>
+                    <div class="projects-list" id="donorCurrentProjects">
+                        <!-- Загружается через JS -->
+                    </div>
+                </div>
+                
+                <!-- Запланированные проекты -->
+                <div id="donorPlannedSection">
+                    <h4 class="projects-section-title"><i class="fas fa-calendar-alt"></i> Запланированные проекты</h4>
+                    <div class="projects-list" id="donorPlannedProjects">
+                        <!-- Загружается через JS -->
+                    </div>
+                </div>
+                
+                <!-- Архивные проекты -->
+                <div id="donorArchiveSection">
+                    <h4 class="projects-section-title"><i class="fas fa-archive"></i> Архивные проекты</h4>
+                    <div class="projects-list" id="donorArchiveProjects">
+                        <!-- Загружается через JS -->
+                    </div>
+                </div>
+                
+                <!-- Статистика -->
+                <div class="book-stats">
+                    <div class="stat">
+                        <div class="stat-number" id="donorTotalProjects">0</div>
+                        <div class="stat-label">Всего проектов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="donorTotalAmount">0</div>
+                        <div class="stat-label">Всего пожертвовано (руб)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- API Client -->
+    <script src="./static/js/api-client.js"></script>
+    <!-- Custom JS -->
+    <script src="./static/js/main.js"></script>
+    <script src="./static/js/profile.js"></script>
+    <script>
+        // Инициализация профиля при загрузке
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Ждем инициализации API
+            await new Promise(resolve => setTimeout(resolve, 100));
+            await initProfile();
+        });
+    </script>
+</body>
+</html>

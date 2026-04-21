@@ -1037,11 +1037,21 @@ def api_index():
 
 @app.route('/')
 def serve_index():
-    return send_from_directory('static', 'index.html')
+    return send_from_directory('.', 'index.html')
 
 @app.route('/<path:path>')
 def serve_static(path):
-    return send_from_directory('static', path)
+    # Сначала пробуем найти файл в текущей директории
+    if os.path.exists(path):
+        return send_from_directory('.', path)
+    # Затем в папке static
+    if os.path.exists(os.path.join('static', path)):
+        return send_from_directory('static', path)
+    # Если это HTML файл из папки static
+    if path.endswith('.html') and os.path.exists(os.path.join('static', path)):
+        return send_from_directory('static', path)
+    # Иначе 404
+    return "File not found", 404
 
 if __name__ == '__main__':
     init_db()
